@@ -595,6 +595,7 @@ ParseRuleCommand(const char *Message, window_rule *Rule)
         { "state", required_argument, NULL, 's' },
         { "desktop", required_argument, NULL, 'd' },
         { "follow-desktop", no_argument, NULL, 'D' },
+        { "ignore-title-updates", no_argument, NULL, 'i' },
         { NULL, 0, NULL, 0 }
     };
 
@@ -633,6 +634,9 @@ ParseRuleCommand(const char *Message, window_rule *Rule)
         } break;
         case 'D': {
             Rule->FollowDesktop = true;
+        } break;
+        case 'i': {
+            Rule->IgnoreTitleUpdates = true;
         } break;
         case '?': {
             Success = false;

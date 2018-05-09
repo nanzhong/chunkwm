@@ -130,7 +130,9 @@ void ApplyRulesForWindowOnTitleChanged(macos_window *Window)
     for (size_t Index = 0; Index < WindowRules.size(); ++Index) {
         window_rule *Rule = WindowRules[Index];
         if (Rule->Name || Rule->Except) {
-            ApplyWindowRule(Window, Rule);
+            if (!Rule->IgnoreTitleUpdates) {
+                ApplyWindowRule(Window, Rule);
+            }
         }
     }
 }
